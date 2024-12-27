@@ -11,7 +11,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  #contents: read
   pages: write
   id-token: write
 
@@ -41,3 +41,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Build and deploy
+        run: |
+          mkdir -p public
+          echo "Hello, GitHub Pages!" > public/index.html  
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
